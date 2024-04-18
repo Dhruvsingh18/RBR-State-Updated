@@ -254,7 +254,7 @@ public class RBR_State extends LinearOpMode {
                     // sleep(waitTimev2);
 
                 })
-                .lineTo(new Vector2d(54, 75))
+                .lineTo(new Vector2d(54, 76.5))
                 /*.addDisplacementMarker(() -> {
                     OpenBox();
                     sleep(1000);
@@ -307,8 +307,20 @@ public class RBR_State extends LinearOpMode {
 
                 .build();
 
+                TrajectorySequence pos1_park = drive.trajectorySequenceBuilder(pos1.end())
+                        .lineToLinearHeading(new Pose2d(49, -80, Math.toRadians(90)))
+                        .lineToLinearHeading(new Pose2d(49, -92, Math.toRadians(90)))
+                        .build();
 
+        TrajectorySequence pos2_park = drive.trajectorySequenceBuilder(pos2.end())
+                .lineToLinearHeading(new Pose2d(49, -80, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(49, -92, Math.toRadians(90)))
+                .build();
 
+        TrajectorySequence pos3_park = drive.trajectorySequenceBuilder(pos3.end())
+                .lineToLinearHeading(new Pose2d(49, -80, Math.toRadians(90)))
+                .lineToLinearHeading(new Pose2d(49, -92, Math.toRadians(90)))
+                .build();
 
 
 
@@ -433,6 +445,9 @@ public class RBR_State extends LinearOpMode {
                 stopRobot();
                 IntakeBox();
 
+                drive.followTrajectorySequence(pos1_park);
+
+
 
 
             }
@@ -447,6 +462,8 @@ public class RBR_State extends LinearOpMode {
                 sleep(500);
                 stopRobot();
                 IntakeBox();
+
+                drive.followTrajectorySequence(pos2_park);
 
 
             }
@@ -517,6 +534,8 @@ public class RBR_State extends LinearOpMode {
                 IntakeBox();
                 sleep(250);
                 stopRobot();
+
+                drive.followTrajectorySequence(pos3_park);
 
             }
 
